@@ -25,6 +25,9 @@ const stringifyJSON = (value) => {
     });
     return '[' + stringifiedItems.join(',') + ']';
   }
+  else if(value instanceof Date){
+    return stringifyString(value.toJSON());
+  }
   else if(type === 'object'){
     var keyValuePairStrings = [];
     for(var key in value){
