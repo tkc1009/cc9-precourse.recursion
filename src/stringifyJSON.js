@@ -11,7 +11,7 @@ const stringifyJSON = (value) => {
 
   //primitive stringify functions
   const stringifySimple = (val) => val + '';
-  const stringifyString = (val) => '\"' + val + '\"';
+  const stringifyString = (val) => '"' + val + '"';
 
   const type = typeof value;
   if(type === 'boolean' || type === 'number' || value === null )
