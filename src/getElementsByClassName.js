@@ -10,6 +10,20 @@
   But we don't like easy! So we'll make you write your own.
 */
 
-const getElementsByClassName = () => {
-  // YOUR CODE HERE
+const getElementsByClassName = (className) => {
+  const result = [];
+
+  const traverseDOM = (node) => {
+    if(node.className && node.className.split(' ').indexOf(className) > -1){
+      result.push(node);
+    }
+
+    const children = node.childNodes;
+    for(let i=0; i<children.length; i++){
+      traverseDOM(children[i]);
+    }
+  };
+
+  traverseDOM(document.body);
+  return result;
 };
