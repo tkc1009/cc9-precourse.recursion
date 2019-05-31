@@ -17,6 +17,26 @@
  *   rockPaperScissors(4); // => [['rock', 'rock', 'rock', 'rock'], etc...]
  */
 
-const rockPaperScissors = () => {
-  // Your code here
+const rockPaperScissors = (totalRounds = 3) => {
+  if(!totalRounds)
+    return [];
+
+  const result = [];
+  const possibleMoves = ['rock', 'paper', 'scissors'];
+  const rps = (currentCombo, remainingRounds) => {
+    if(remainingRounds === 0) {
+      result.push(currentCombo.slice());
+      return;
+    }
+
+    for(let i=0; i<possibleMoves.length; i++){
+      currentCombo.push(possibleMoves[i]);
+      rps(currentCombo, remainingRounds - 1);
+      currentCombo.pop();
+    }
+  };
+
+  rps([], totalRounds);
+
+  return result;
 };

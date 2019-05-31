@@ -30,6 +30,28 @@ const unstringifiableValues = [
 ];
 
 describe("stringifyJSON", function() {
+  it("should stringify numbers properly", () =>{
+    var testNumber = 10;
+    expect(stringifyJSON(testNumber)).toBe(JSON.stringify(testNumber));
+  });
+
+  it("should stringify strings properly", () =>{
+    var str = 'test';
+    expect(stringifyJSON(str)).toBe(JSON.stringify(str));
+  });
+
+  it("should stringify booleans properly", () =>{
+    var b = false;
+    expect(stringifyJSON(b)).toBe(JSON.stringify(b));
+    b = true;
+    expect(stringifyJSON(b)).toBe(JSON.stringify(b));
+  });
+
+  it("should stringify arrays properly", () =>{
+    var arr = ['test', 98, true];
+    expect(stringifyJSON(arr)).toBe(JSON.stringify(arr));
+  });
+
   function testStringify(valueToTest, index) {
     it("should parse some objects " + index, () => {
       const result = stringifyJSON(valueToTest);
