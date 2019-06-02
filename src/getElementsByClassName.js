@@ -10,6 +10,18 @@
   But we don't like easy! So we'll make you write your own.
 */
 
-const getElementsByClassName = () => {
-  // YOUR CODE HERE
+const getElementsByClassName = (targetClassName) => {
+  const matchedNodes = [];
+  const documentRoot = this.document;
+
+  const traverseDOM = (node) => {
+    for (let childNode of node.children) {
+      if (childNode.classList.contains(targetClassName)) matchedNodes.push(childNode);
+      traverseDOM(childNode);
+    }
+  }
+
+  traverseDOM(documentRoot);
+  return matchedNodes;
+
 };

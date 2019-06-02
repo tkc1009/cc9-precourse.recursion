@@ -17,6 +17,23 @@
  *   rockPaperScissors(4); // => [['rock', 'rock', 'rock', 'rock'], etc...]
  */
 
-const rockPaperScissors = () => {
-  // Your code here
+// Forced solution
+const rockPaperScissors = (rounds = 3) => {
+  const options = ["rock", "paper", "scissors"];
+
+  const recurse = (rounds, inputArray) => {
+    const outputArray = [];
+    if (rounds > 0) {
+        inputArray.forEach((inputArrayItem) => {
+          options.forEach((option) => {
+            Array.isArray(inputArrayItem) ? outputArray.push([...inputArrayItem, option]) : outputArray.push([inputArrayItem, option])
+          })
+        })
+        return recurse(rounds - 1, outputArray);
+    } else {
+      return inputArray;
+    }
+  }
+
+  return recurse(rounds - 1, options);
 };
