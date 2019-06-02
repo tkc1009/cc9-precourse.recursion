@@ -14,6 +14,9 @@ const stringifyJSON = (inputItem) => {
   } else if (typeof inputItem === "function" || inputItem === undefined) {
     return false;
   
+  } else if (inputItem instanceof Date) {
+    return `"${inputItem.toISOString()}"`
+
   } else if (Array.isArray(inputItem)) {
     let returnString = "";
     inputItem.forEach((item, i) => {

@@ -19,7 +19,8 @@ const stringifiableValues = [
   { a: { b: "c" } },
   { a: ["b", "c"] },
   [{ a: "b" }, { c: "d" }],
-  { a: [], c: {}, b: true }
+  { a: [], c: {}, b: true },
+  { a: [new Date("2019-06-01"), new Date()], c: {}, b: true }
 ];
 
 const unstringifiableValues = [
