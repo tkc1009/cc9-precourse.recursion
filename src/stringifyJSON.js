@@ -46,6 +46,12 @@ const stringifyJSON = (target) => {
         }
       }
       result.push('}');
+    } else if(toString.apply(value).split(' ')[1].match('Date')){
+      result.push('"');
+      for(let s = 0; s < value.toJSON().length; s++){
+        result.push(value.toJSON()[s]);
+      }
+      result.push('"');
     } else if(toString.apply(value).split(' ')[1].match('String')){
       result.push('"');
       for(let s = 0; s < value.length; s++){
